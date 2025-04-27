@@ -1,6 +1,9 @@
-FROM tomcat:8.0
+# Use an official Nginx image from Docker Hub
+FROM nginx:alpine
 
-# Copy the WAR file into Tomcat's webapps directory
-ADD ./target/*.war /usr/local/tomcat/webapps/
+# Copy the local HTML and CSS files into the container's Nginx directory
+COPY index.html /usr/share/nginx/html/index.html
+COPY style.css /usr/share/nginx/html/style.css
 
-EXPOSE 8080
+# Expose port 80 to access the website
+EXPOSE 80
