@@ -1,8 +1,6 @@
-# Use an official Nginx image as the base image
-FROM nginx:latest
+FROM tomcat:8.0
 
-# Copy the static website files into the container's web server directory
-COPY ./html /usr/share/nginx/html
+# Copy the WAR file into Tomcat's webapps directory
+ADD ./target/*.war /usr/local/tomcat/webapps/
 
-# Expose port 80 to allow external access to the web server
-EXPOSE 80
+EXPOSE 8080
